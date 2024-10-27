@@ -1,56 +1,47 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>学習記録ダッシュボード</title>
+    <title>Study Dashboard</title>
     <style>
-        body {
-            background-color: #e6e6fa;
-            color: #4b0082;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-        table {
-            margin: 0 auto;
-            border-collapse: collapse;
-            width: 80%;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid #4b0082;
-            padding: 10px;
-            text-align: center;
-        }
+        body { background-color: #f0f0ff; color: #333; font-family: Arial, sans-serif; }
+        .container { max-width: 800px; margin: auto; padding: 20px; background-color: #f5f5ff; border-radius: 8px; }
+        h2 { color: #5e5ec2; }
+        table { width: 100%; margin-top: 20px; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+        button { background-color: #5e5ec2; color: white; padding: 10px; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #4848a8; }
     </style>
 </head>
 <body>
-    <h1>学習記録ダッシュボード</h1>
-    <h2>{{ .currentDate }}</h2>
-
-    <h3>学習記録</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>開始時間</th>
-                <th>終了時間</th>
-                <th>集中した時間</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{ range .records }}
-            <tr>
-                <td>{{ .StartTime }}</td>
-                <td>{{ .EndTime }}</td>
-                <td>{{ .FocusedDuration }}</td>
-            </tr>
-            {{ end }}
-        </tbody>
-    </table>
-
-    <form action="/logout" method="post">
-        <button type="submit">ログアウト</button>
-    </form>
+    <div class="container">
+        <h2>学習記録ダッシュボード</h2>
+        <p>今日の日付: {{.CurrentDate}}</p> <!-- 今日の日付を表示 -->
+        <button onclick="window.location.href='/logout'">Logout</button>
+        
+        <h3>学習データ</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>日付</th>
+                    <th>検出時間 (秒)</th>
+                    <th>Study Time (秒)</th>
+                    <th>集中度スコア (%)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .StudyData}}
+                <tr>
+                    <td>{{.Date}}</td>
+                    <td>{{.DetectionTime}}</td>
+                    <td>{{.StudyTime}}</td>
+                    <td>{{.FocusScore}}</td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
 
