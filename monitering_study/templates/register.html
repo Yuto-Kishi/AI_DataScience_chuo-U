@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ユーザー登録</title>
+    <style>
+        body {
+            background-color: #e6e6fa; /* ラベンダー色 */
+            color: #4b0082; /* インディゴ色 */
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        form {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #d8bfd8; /* 牡丹色 */
+            border-radius: 10px;
+            display: inline-block;
+        }
+        input {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            border: 1px solid #4b0082; /* インディゴ色 */
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4b0082; /* インディゴ色 */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #6a5acd; /* スレートブルー */
+        }
+    </style>
+</head>
+<body>
+    <h1>ユーザー登録</h1>
+    <form action="/register" method="post">
+        <input type="email" name="email" placeholder="メールアドレス" required>
+        <input type="text" name="username" placeholder="ユーザー名" required>
+        <button type="submit">登録</button>
+    </form>
+    <p>すでに登録済みですか？<a href="/login">ログイン</a></p>
+</body>
+</html>
+

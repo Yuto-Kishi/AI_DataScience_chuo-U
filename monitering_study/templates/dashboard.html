@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学習記録ダッシュボード</title>
+    <style>
+        body {
+            background-color: #e6e6fa;
+            color: #4b0082;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        table {
+            margin: 0 auto;
+            border-collapse: collapse;
+            width: 80%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #4b0082;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>学習記録ダッシュボード</h1>
+    <h2>{{ .currentDate }}</h2>
+
+    <h3>学習記録</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>開始時間</th>
+                <th>終了時間</th>
+                <th>集中した時間</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ range .records }}
+            <tr>
+                <td>{{ .StartTime }}</td>
+                <td>{{ .EndTime }}</td>
+                <td>{{ .FocusedDuration }}</td>
+            </tr>
+            {{ end }}
+        </tbody>
+    </table>
+
+    <form action="/logout" method="post">
+        <button type="submit">ログアウト</button>
+    </form>
+</body>
+</html>
+
